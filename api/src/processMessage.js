@@ -70,8 +70,8 @@ module.exports = (event) => {
                     tickets = ticketList;
                     request(options, function(error, response, body){
                         var res = JSON.parse(response.body);
-                        firstName = res.body.first_name;
-                        lastName = res.body.last_name;
+                        firstName = res.first_name;
+                        lastName = res.last_name;
                         identity = firstName + " " + lastName;
                         console.log(identity);
                     });
