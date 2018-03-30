@@ -25,8 +25,9 @@ module.exports = (event) => {
     const senderId = event.sender.id;
     const message = event.message.text;
     var tickets;
+    var f = true;
 
-    if(flag.fl) {
+    if(f) {
         console.log("inside if statement");
         var apiaiSession = apiAiClient.textRequest(message, {sessionId: 'cool'});
         //console.log(apiaiSession);
@@ -39,7 +40,7 @@ module.exports = (event) => {
                 sendTextMessage(senderId, result);
             } else {
                 console.log("inside else part");
-                flag.fl = false;
+                f = false;
                 var defaultMessage = "We are connecting you our live agent!";
                 var zendesk = new Zendesk({
                   url: 'https://humanbot.zendesk.com', // https://example.zendesk.com
