@@ -49,7 +49,7 @@ module.exports = (event) => {
                 });
                 console.log("middle of zendesk");
                 zendesk.tickets.list().then(function(ticketList) {
-                    console.log(ticketList);
+                    console.log(ticketList + "hello");
                     tickets = ticketList;
                     tickets.forEach(function(element) {
                         console.log(element.via.channel);
