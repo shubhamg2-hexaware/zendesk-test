@@ -28,6 +28,16 @@ module.exports = (event) => {
     var f = true;
     console.log(event);
 
+    var options = {
+        method:'GET',
+        url:`https://graph.facebook.com/v2.6/${senderId}`,
+        qs: { access_token: FACEBOOK_ACCESS_TOKEN },
+    }
+
+    request(options, function(error, response, body){
+        console.log(response.body);
+    });
+
     if(f) {
         console.log("inside if statement");
         var apiaiSession = apiAiClient.textRequest(message, {sessionId: 'cool'});
