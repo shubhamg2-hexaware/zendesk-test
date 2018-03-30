@@ -56,10 +56,11 @@ module.exports = (event) => {
                 })
             }
         });
-    } 
+        apiaiSession.on('error', error => console.log(error));
+        apiaiSession.end();
+    }
 
-    apiaiSession.on('error', error => console.log(error));
-    apiaiSession.end();
+    
 };
 
 // var Zendesk = require('zendesk-node-api');
