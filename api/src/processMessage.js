@@ -51,7 +51,7 @@ module.exports = (event) => {
                 zendesk.tickets.list().then(function(ticketList) {
                     console.log(ticketList);
                     tickets = ticketList;
-                    tickets.fo+rEach(function(element) {
+                    tickets.forEach(function(element) {
                         console.log(element.via.channel);
                     
                         if(element.via.channel == "facebook") {
