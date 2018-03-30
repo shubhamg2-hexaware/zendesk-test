@@ -74,17 +74,17 @@ module.exports = (event) => {
                         lastName = res.last_name;
                         identity = firstName + " " + lastName;
                         console.log(identity);
-                    });
-                    tickets.forEach(function(element) {
-                        console.log(element.via.channel);
-                        console.log(senderId);
-                        if(element.via.channel == "facebook") {
-                            console.log(element.via.source.from.name);
-                            if(element.via.source.from.name == identity) {
-                                console.log("~~~~~~~~~~yes~~~~~~~~~~~~~~~~");
+                        tickets.forEach(function(element) {
+                            console.log(element.via.channel);
+                            console.log(senderId);
+                            if(element.via.channel == "facebook") {
+                                console.log(element.via.source.from.name);
+                                if(element.via.source.from.name == identity) {
+                                    console.log("~~~~~~~~~~yes~~~~~~~~~~~~~~~~");
+                                }
                             }
-                        }
-                    })
+                        })
+                    });
                 });
                 //sendTextMessage(senderId, defaultMessage);
             }
