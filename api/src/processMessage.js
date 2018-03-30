@@ -35,13 +35,7 @@ module.exports = (event) => {
         qs: { access_token: FACEBOOK_ACCESS_TOKEN },
     }
 
-    request(options, function(error, response, body){
-        console.log(response.body);
-        firstName = response.body.first_name;
-        lastName = response.body.last_name;
-        identity = firstName + " " + lastName;
-        console.log(identity);
-    });
+    
 
     if(f) {
         console.log("inside if statement");
@@ -74,6 +68,13 @@ module.exports = (event) => {
                 zendesk.tickets.list().then(function(ticketList) {
                     console.log(ticketList + "hello");
                     tickets = ticketList;
+                    request(options, function(error, response, body){
+                        console.log(response.body);
+                        firstName = response.body.first_name;
+                        lastName = response.body.last_name;
+                        identity = firstName + " " + lastName;
+                        console.log(identity);
+                    });
                     tickets.forEach(function(element) {
                         console.log(element.via.channel);
                         console.log(senderId);
