@@ -26,7 +26,8 @@ module.exports = (event) => {
     const message = event.message.text;
     var tickets;
     var f = true;
-    console.log(event);
+    var identity;
+    //console.log(event);
 
     var options = {
         method:'GET',
@@ -36,6 +37,9 @@ module.exports = (event) => {
 
     request(options, function(error, response, body){
         console.log(response.body);
+        firstName = response.body.first_name;
+        lastName = response.body.last_name;
+        identity = firstName + " " + lastName;
     });
 
     if(f) {
@@ -73,8 +77,8 @@ module.exports = (event) => {
                         console.log(element.via.channel);
                         console.log(senderId);
                         if(element.via.channel == "facebook") {
-                            console.log(element.via.source.from.facebook_id);
-                            if(element.via.source.from.facebook_id == senderId) {
+                            console.log(element.via.source.from.name);
+                            if(element.via.source.from.name == identity) {
                                 console.log("~~~~~~~~~~yes~~~~~~~~~~~~~~~~");
                             }
                         }
