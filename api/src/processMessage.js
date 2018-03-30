@@ -48,21 +48,21 @@ module.exports = (event) => {
                   token: 'QoDoULlBytoaT3t1KW92dLo63gp7pv4uQp3NamOD' // hfkUny3vgHCcV3UfuqMFZWDrLKms4z3W2f6ftjPT
                 });
                 console.log("middle of zendesk");
-                zendesk.tickets.list().then(function(ticketList){
+                zendesk.tickets.list().then(function(ticketList) {
                     console.log(ticketList);
                     tickets = ticketList;
+                    tickets.forEach(function(element) {
+                        console.log(element.via.channel);
+                    
+                        if(element.via.channel == "facebook") {
+                            console.log(element.via.source.from.facebook_id);
+                            if(element.via.source.from.facebook_id == senderId) {
+                                console.log("~~~~~~~~~~yes~~~~~~~~~~~~~~~~");
+                            }
+                        }
+                    })
                 });
                 //sendTextMessage(senderId, defaultMessage);
-                tickets.forEach(function(element) {
-                    console.log(element.via.channel);
-                    
-                    if(element.via.channel == "facebook") {
-                        console.log(element.via.source.from.facebook_id);
-                        if(element.via.source.from.facebook_id == senderId) {
-                            console.log("~~~~~~~~~~yes~~~~~~~~~~~~~~~~");
-                        }
-                    }
-                })
             }
         });
         apiaiSession.on('error', error => console.log(error));
