@@ -25,11 +25,12 @@ module.exports = (event) => {
     const senderId = event.sender.id;
     const message = event.message.text;
     var tickets;
-    var apiaiSession;
 
     if(flag.fl) {
-        apiaiSession = apiAiClient.textRequest(message, {sessionId: 'cool'});
+        console.log("inside if statement");
+        var apiaiSession = apiAiClient.textRequest(message, {sessionId: 'cool'});
         //console.log(apiaiSession);
+        console.log("inside apiai session");
         apiaiSession.on('response', (response) => {
             var result = response.result.fulfillment.speech;
             //console.log(response.result.fulfillment.messages[0]);
@@ -37,6 +38,7 @@ module.exports = (event) => {
             if(response.result.metadata.intentName != "Default Fallback Intent") {
                 sendTextMessage(senderId, result);
             } else {
+                console.log("inside else part");
                 flag.fl = false;
                 var defaultMessage = "We are connecting you our live agent!";
                 var zendesk = new Zendesk({
@@ -44,7 +46,7 @@ module.exports = (event) => {
                   email: 'wrestligmania9@gmail.com', // me@example.com
                   token: 'QoDoULlBytoaT3t1KW92dLo63gp7pv4uQp3NamOD' // hfkUny3vgHCcV3UfuqMFZWDrLKms4z3W2f6ftjPT
                 });
-
+                console.log("middle of zendesk");
                 zendesk.tickets.list().then(function(ticketList){
                     console.log(ticketList);
                     tickets = ticketList;
@@ -62,9 +64,9 @@ module.exports = (event) => {
                 })
             }
         });
+        apiaiSession.on('error', error => console.log(error));
+        apiaiSession.end();
     }
-    apiaiSession.on('error', error => console.log(error));
-    apiaiSession.end();
 
     
 };
