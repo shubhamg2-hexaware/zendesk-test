@@ -26,6 +26,7 @@ module.exports = (event) => {
     const message = event.message.text;
     var tickets;
     var f = true;
+    console.log(event);
 
     if(f) {
         console.log("inside if statement");
