@@ -48,27 +48,27 @@ module.exports = (event) => {
                   token: 'PRNRUtWq6hEDj0NFzFhdU5VbuYLnDpUw9LJyMwAI' // hfkUny3vgHCcV3UfuqMFZWDrLKms4z3W2f6ftjPT
                 });
                 console.log("middle of zendesk");
-                zendesk.tickets.update(6, {
-                    ticket: {
-                        "assignee_id":361265200073
-                        }
-                }).then(function(result){
-                    console.log(result);
-                });
-                // zendesk.tickets.list().then(function(ticketList) {
-                //     console.log(ticketList + "hello");
-                //     tickets = ticketList;
-                //     tickets.forEach(function(element) {
-                //         console.log(element.via.channel);
-                    
-                //         if(element.via.channel == "facebook") {
-                //             console.log(element.via.source.from.facebook_id);
-                //             if(element.via.source.from.facebook_id == senderId) {
-                //                 console.log("~~~~~~~~~~yes~~~~~~~~~~~~~~~~");
-                //             }
+                // zendesk.tickets.update(6, {
+                //     ticket: {
+                //         "assignee_id":361265200073
                 //         }
-                //     })
+                // }).then(function(result){
+                //     console.log(result);
                 // });
+                zendesk.tickets.list().then(function(ticketList) {
+                    console.log(ticketList + "hello");
+                    tickets = ticketList;
+                    tickets.forEach(function(element) {
+                        console.log(element.via.channel);
+                    
+                        if(element.via.channel == "facebook") {
+                            console.log(element.via.source.from.facebook_id);
+                            if(element.via.source.from.facebook_id == senderId) {
+                                console.log("~~~~~~~~~~yes~~~~~~~~~~~~~~~~");
+                            }
+                        }
+                    })
+                });
                 //sendTextMessage(senderId, defaultMessage);
             }
         });
