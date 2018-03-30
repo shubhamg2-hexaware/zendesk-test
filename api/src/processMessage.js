@@ -50,8 +50,13 @@ module.exports = (event) => {
                 });
                 //sendTextMessage(senderId, defaultMessage);
                 tickets.forEach(function(element) {
-                    if(element.via.channel == "facebook" && element.via.source.from.facebook_id == senderId) {
-                        console.log("~~~~~~~~~~yes~~~~~~~~~~~~~~~~");
+                    console.log(element.via.channel);
+                    
+                    if(element.via.channel == "facebook") {
+                        console.log(element.via.source.from.facebook_id);
+                        if(element.via.source.from.facebook_id == senderId) {
+                            console.log("~~~~~~~~~~yes~~~~~~~~~~~~~~~~");
+                        }
                     }
                 })
             }
