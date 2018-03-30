@@ -69,9 +69,9 @@ module.exports = (event) => {
                     console.log(ticketList + "hello");
                     tickets = ticketList;
                     request(options, function(error, response, body){
-                        console.log(JSON.parse(response.body));
-                        firstName = response.body.first_name;
-                        lastName = response.body.last_name;
+                        var res = JSON.parse(response.body);
+                        firstName = res.body.first_name;
+                        lastName = res.body.last_name;
                         identity = firstName + " " + lastName;
                         console.log(identity);
                     });
