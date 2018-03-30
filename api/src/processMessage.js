@@ -40,6 +40,7 @@ module.exports = (event) => {
         firstName = response.body.first_name;
         lastName = response.body.last_name;
         identity = firstName + " " + lastName;
+        console.log(identity);
     });
 
     if(f) {
