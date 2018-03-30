@@ -45,7 +45,7 @@ module.exports = (event) => {
                 var zendesk = new Zendesk({
                   url: 'https://humanbot.zendesk.com', // https://example.zendesk.com
                   email: 'wrestligmania9@gmail.com', // me@example.com
-                  token: 'zgTeRdX9cEzyetr0e4E8CYOZvyIE2U3KA0r9hC2m' // hfkUny3vgHCcV3UfuqMFZWDrLKms4z3W2f6ftjPT
+                  token: 'PRNRUtWq6hEDj0NFzFhdU5VbuYLnDpUw9LJyMwAI' // hfkUny3vgHCcV3UfuqMFZWDrLKms4z3W2f6ftjPT
                 });
                 console.log("middle of zendesk");
                 zendesk.tickets.update(6, {
