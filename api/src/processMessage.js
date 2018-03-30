@@ -60,7 +60,7 @@ module.exports = (event) => {
                     tickets = ticketList;
                     tickets.forEach(function(element) {
                         console.log(element.via.channel);
-                    
+                        console.log(senderId);
                         if(element.via.channel == "facebook") {
                             console.log(element.via.source.from.facebook_id);
                             if(element.via.source.from.facebook_id == senderId) {
