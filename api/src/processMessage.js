@@ -1,6 +1,6 @@
 const request = require('request');
 var deasync=require('deasync');
-var fl = require('./flag.json');
+var flag = require('./flag.json');
 var natural = require('natural');
 const FACEBOOK_ACCESS_TOKEN = "EAAc6hI7VvPwBALT7EkqShfe2H2SimKfSZCfLKGTtgLUHMY5ZBOKHUf4Ti1n2B9Cp2CR8OVqTZCFZBeuFNjNpZCsLeIgzH8YPDZCyXNSswTZAowgSjyw185QQZCXnf6FbimctLKhuXm6ogvJFZAkjn3ByHpZAE0RBOiQ6uolxgUplO40QZDZD";
 const API_AI_TOKEN = '6b40dcc3b68848bf84c7332d98166377'; // silly-name-maker agent.
