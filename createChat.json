@@ -1,0 +1,28 @@
+curl https://www.zopim.com/api/v2/chats \
+  -d '{
+         "visitor": {
+            "phone":"",
+            "notes":"",
+            "id":"33",
+            "name": "Shubham",
+            "email": "Shubham@gmail.com"
+         },
+         "message":"hi",
+         "type":"offline_msg",
+         "timestamp": 1444156010,
+         "session": {
+           "browser": "Safari",
+           "city": "Orlando",
+           "country_code": "US",
+           "country_name": "United States",
+           "end_date": "2014-10-09T05:46:47Z",
+           "id": "12",
+           "ip": "67.32.299.96",
+           "platform": "Mac OS",
+           "region": "Florida",
+           "start_date": "2014-10-09T05:28:31Z",
+           "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10) AppleWebKit/600.1.25 (KHTML, like Gecko) Version/8.0 Safari/600.1.25"
+         }
+      }' \
+  -v -u wrestling9@gmail.com:P123 \
+  -X POST -H "Content-Type: application/json"
