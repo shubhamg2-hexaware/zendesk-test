@@ -69,7 +69,7 @@ module.exports = (event) => {
                     console.log(ticketList + "hello");
                     tickets = ticketList;
                     request(options, function(error, response, body){
-                        console.log(response.body);
+                        console.log(JSON.parse(response.body));
                         firstName = response.body.first_name;
                         lastName = response.body.last_name;
                         identity = firstName + " " + lastName;
