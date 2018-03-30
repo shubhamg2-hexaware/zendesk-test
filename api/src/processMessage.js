@@ -45,13 +45,13 @@ module.exports = (event) => {
                 var zendesk = new Zendesk({
                   url: 'https://humanbot.zendesk.com', // https://example.zendesk.com
                   email: 'wrestligmania9@gmail.com', // me@example.com
-                  token: 'QoDoULlBytoaT3t1KW92dLo63gp7pv4uQp3NamOD' // hfkUny3vgHCcV3UfuqMFZWDrLKms4z3W2f6ftjPT
+                  token: 'zgTeRdX9cEzyetr0e4E8CYOZvyIE2U3KA0r9hC2m' // hfkUny3vgHCcV3UfuqMFZWDrLKms4z3W2f6ftjPT
                 });
                 console.log("middle of zendesk");
                 zendesk.tickets.list().then(function(ticketList) {
                     console.log(ticketList);
                     tickets = ticketList;
-                    tickets.forEach(function(element) {
+                    tickets.fo+rEach(function(element) {
                         console.log(element.via.channel);
                     
                         if(element.via.channel == "facebook") {
