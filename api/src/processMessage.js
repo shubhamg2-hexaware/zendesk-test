@@ -25,9 +25,10 @@ module.exports = (event) => {
     const senderId = event.sender.id;
     const message = event.message.text;
     var tickets;
+    var apiaiSession;
 
     if(flag.fl) {
-        var apiaiSession = apiAiClient.textRequest(message, {sessionId: 'cool'});
+        apiaiSession = apiAiClient.textRequest(message, {sessionId: 'cool'});
         //console.log(apiaiSession);
         apiaiSession.on('response', (response) => {
             var result = response.result.fulfillment.speech;
@@ -61,9 +62,9 @@ module.exports = (event) => {
                 })
             }
         });
-        apiaiSession.on('error', error => console.log(error));
-        apiaiSession.end();
     }
+    apiaiSession.on('error', error => console.log(error));
+    apiaiSession.end();
 
     
 };
