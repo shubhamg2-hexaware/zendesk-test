@@ -44,7 +44,7 @@ module.exports = (event) => {
                 var defaultMessage = "We are connecting you our live agent!";
                 var zendesk = new Zendesk({
                   url: 'https://humanbot.zendesk.com', // https://example.zendesk.com
-                  email: 'wrestligmania9@gmail.com', // me@example.com
+                  email: 'wrestlingmania9@gmail.com', // me@example.com
                   token: 'PRNRUtWq6hEDj0NFzFhdU5VbuYLnDpUw9LJyMwAI' // hfkUny3vgHCcV3UfuqMFZWDrLKms4z3W2f6ftjPT
                 });
                 console.log("middle of zendesk");
