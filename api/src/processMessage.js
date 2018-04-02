@@ -49,7 +49,7 @@ module.exports = (event) => {
             if(response.result.metadata.intentName != "Default Fallback Intent") {
                 sendTextMessage(senderId, result);
             } else {
-                console.log("inside else part");
+                //console.log("inside else part");
                 f = false;
                 var defaultMessage = "We are connecting you our live agent!";
                 var zendesk = new Zendesk({
@@ -66,7 +66,7 @@ module.exports = (event) => {
                 //     console.log(result);
                 // });
                 zendesk.tickets.list().then(function(ticketList) {
-                    console.log(ticketList + "hello");
+                    //console.log(ticketList + "hello");
                     tickets = ticketList;
                     request(options, function(error, response, body){
                         var res = JSON.parse(response.body);
@@ -76,7 +76,7 @@ module.exports = (event) => {
                         console.log(identity);
                         tickets.forEach(function(element) {
                             console.log(element.via.channel);
-                            console.log(senderId);
+                            //console.log(senderId);
                             if(element.via.channel == "facebook") {
                                 console.log(element.via.source.from.name);
                                 if(element.via.source.from.name == identity) {
