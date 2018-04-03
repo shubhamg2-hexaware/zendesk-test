@@ -86,6 +86,7 @@ module.exports = (event) => {
                             if(element.via.channel == "facebook") {
                                 console.log(element.via.source.from.name);
                                 if(element.via.source.from.name == identity) {
+                                    console.log("~~~~~~~matched~~~~~");
                                     client.sessions.get(function (err, res, result) {
                                     if (err) {
                                         console.log(err);
@@ -93,6 +94,7 @@ module.exports = (event) => {
                                     } else {
                                         if(result.length != 0) {
                                             userId = 361360698294; //result[0].user_id;
+                                            console.log(element.id);
                                             zendesk.tickets.update(element.id, {
                                                 ticket: {
                                                     "assignee_id":userId
