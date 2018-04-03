@@ -6,8 +6,16 @@ const FACEBOOK_ACCESS_TOKEN = "EAAc6hI7VvPwBALT7EkqShfe2H2SimKfSZCfLKGTtgLUHMY5Z
 const API_AI_TOKEN = '6b40dcc3b68848bf84c7332d98166377'; // silly-name-maker agent.
 const apiAiClient = require('apiai')(API_AI_TOKEN);
 var Zendesk = require('zendesk-node-api');
+var zendesk = require('node-zendesk');
+var exampleConfig = require('./config');
 
 var async = require('async');
+
+var client = zendesk.createClient({
+  username:  exampleConfig.auth.username,
+  token:     exampleConfig.auth.token,
+  remoteUri: exampleConfig.auth.remoteUri
+});
 
 const sendTextMessage = (senderId, text) => {
     request({
@@ -27,6 +35,7 @@ module.exports = (event) => {
     var tickets;
     var f = true;
     var identity;
+    var userId;
     //console.log(event);
 
     var options = {
@@ -57,7 +66,7 @@ module.exports = (event) => {
                   email: 'wrestlingmania9@gmail.com', // me@example.com
                   token: 'PRNRUtWq6hEDj0NFzFhdU5VbuYLnDpUw9LJyMwAI' // hfkUny3vgHCcV3UfuqMFZWDrLKms4z3W2f6ftjPT
                 });
-                console.log("middle of zendesk");
+                //console.log("middle of zendesk");
                 // zendesk.tickets.update(6, {
                 //     ticket: {
                 //         "assignee_id":361265200073
@@ -66,21 +75,37 @@ module.exports = (event) => {
                 //     console.log(result);
                 // });
                 zendesk.tickets.list().then(function(ticketList) {
-                    //console.log(ticketList + "hello");
+                    console.log(ticketList + "hello");
                     tickets = ticketList;
                     request(options, function(error, response, body){
                         var res = JSON.parse(response.body);
                         firstName = res.first_name;
                         lastName = res.last_name;
                         identity = firstName + " " + lastName;
-                        console.log(identity);
                         tickets.forEach(function(element) {
-                            console.log(element.via.channel);
-                            //console.log(senderId);
                             if(element.via.channel == "facebook") {
                                 console.log(element.via.source.from.name);
                                 if(element.via.source.from.name == identity) {
-                                    console.log("~~~~~~~~~~yes~~~~~~~~~~~~~~~~");
+                                    client.sessions.get(function (err, res, result) {
+                                    if (err) {
+                                        console.log(err);
+                                        return;
+                                    } else {
+                                        if(result.length != 0) {
+                                            userId = 361225337273; //result[0].user_id;
+                                            zendesk.tickets.update(element.id, {
+                                                ticket: {
+                                                    "assignee_id":userId
+                                                }
+                                            }).then(function(result){
+                                                console.log(result);
+                                            });
+                                        }
+                                    }
+                                    //console.log(responseList, "responseList");
+                                    //console.log(resultList, "resultList");
+                                    console.log(JSON.stringify(result, null, 2, true));
+                                    });// getting the session of a user.
                                 }
                             }
                         })
