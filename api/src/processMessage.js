@@ -101,12 +101,12 @@ module.exports = (event) => {
                                                 }
                                             }).then(function(result2){
                                                 console.log(result2, "~~~~update result~~~~");
-                                            });
+                                            })
                                         }
                                     }
                                     //console.log(responseList, "responseList");
                                     //console.log(resultList, "resultList");
-                                    console.log(JSON.stringify(result, null, 2, true));
+                                    //console.log(JSON.stringify(result, null, 2, true));
                                     });// getting the session of a user.
                                 }
                             }
