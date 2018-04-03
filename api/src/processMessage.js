@@ -93,11 +93,11 @@ module.exports = (event) => {
                                         return;
                                     } else {
                                         if(result.length != 0) {
-                                            userId = 361360698294; //result[0].user_id;
+                                            //userId = 361360698294; //result[0].user_id;
                                             console.log(element.id);
                                             zendesk.tickets.update(element.id, {
-                                                ticket: {
-                                                    "assignee_id":userId
+                                                "ticket": {
+                                                    "assignee_id":361360698294
                                                 }
                                             }).then(function(result2){
                                                 console.log(result2, "~~~~update result~~~~");
