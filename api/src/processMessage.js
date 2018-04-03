@@ -74,10 +74,10 @@ module.exports = (event) => {
                 // }).then(function(result){
                 //     console.log(result);
                 // });
-                zendesk.tickets.list().then(function(ticketList) {
+                zendesk.tickets.list().then(function(ticketList) { // getting all tickets.
                     console.log(ticketList + "hello");
                     tickets = ticketList;
-                    request(options, function(error, response, body){
+                    request(options, function(error, response, body) { // getting profile information from sender_id
                         var res = JSON.parse(response.body);
                         firstName = res.first_name;
                         lastName = res.last_name;
