@@ -97,7 +97,7 @@ module.exports = (event) => {
                                             console.log(element.id);
                                             zendesk.tickets.update(element.id, {
                                                 "ticket": {
-                                                    "assignee_id":361360698294
+                                                    "assignee_id":361225337273
                                                 }
                                             }).then(function(result2){
                                                 console.log(result2, "~~~~update result~~~~");
