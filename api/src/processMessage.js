@@ -86,7 +86,7 @@ module.exports = (event) => {
                             if(element.via.channel == "facebook") {
                                 console.log(element.via.source.from.name);
                                 if(element.via.source.from.name == identity) {
-                                    console.log("~~~~~~~matched~~~~~");
+                                    console.log("~~~~~matched~~~~~");
                                     client.sessions.get(function (err, res, result) {
                                     if (err) {
                                         console.log(err);
@@ -99,8 +99,8 @@ module.exports = (event) => {
                                                 ticket: {
                                                     "assignee_id":userId
                                                 }
-                                            }).then(function(result){
-                                                console.log(result);
+                                            }).then(function(result2){
+                                                console.log(result2, "~~~~update result~~~~");
                                             });
                                         }
                                     }
