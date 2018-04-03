@@ -92,7 +92,7 @@ module.exports = (event) => {
                                         return;
                                     } else {
                                         if(result.length != 0) {
-                                            userId = 361225337273; //result[0].user_id;
+                                            userId = 361360698294; //result[0].user_id;
                                             zendesk.tickets.update(element.id, {
                                                 ticket: {
                                                     "assignee_id":userId
