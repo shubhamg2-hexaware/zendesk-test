@@ -66,14 +66,7 @@ module.exports = (event) => {
                   email: 'wrestlingmania9@gmail.com', // me@example.com
                   token: 'PRNRUtWq6hEDj0NFzFhdU5VbuYLnDpUw9LJyMwAI' // hfkUny3vgHCcV3UfuqMFZWDrLKms4z3W2f6ftjPT
                 });
-                //console.log("middle of zendesk");
-                // zendesk.tickets.update(6, {
-                //     ticket: {
-                //         "assignee_id":361265200073
-                //         }
-                // }).then(function(result){
-                //     console.log(result);
-                // });
+                
                 zendesk.tickets.list().then(function(ticketList) { // getting all tickets.
                     console.log(ticketList + "hello");
                     tickets = ticketList;
@@ -99,7 +92,7 @@ module.exports = (event) => {
                                                 "ticket": {
                                                     "assignee_id":361225337273
                                                 }
-                                            }).then(function(result2){
+                                            }).then(function(result2) {
                                                 console.log(result2, "~~~~update result~~~~");
                                             })
                                         }
