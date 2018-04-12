@@ -2,12 +2,13 @@ const request = require('request');
 var deasync=require('deasync');
 var flag = require('./flag.json');
 var natural = require('natural');
-const FACEBOOK_ACCESS_TOKEN = "EAAc6hI7VvPwBALT7EkqShfe2H2SimKfSZCfLKGTtgLUHMY5ZBOKHUf4Ti1n2B9Cp2CR8OVqTZCFZBeuFNjNpZCsLeIgzH8YPDZCyXNSswTZAowgSjyw185QQZCXnf6FbimctLKhuXm6ogvJFZAkjn3ByHpZAE0RBOiQ6uolxgUplO40QZDZD";
-const API_AI_TOKEN = '6b40dcc3b68848bf84c7332d98166377'; // silly-name-maker agent.
+const FACEBOOK_ACCESS_TOKEN = process.env.FACEBOOK_TOKEN;
+const API_AI_TOKEN = process.env.AI_TOKEN; // silly-name-maker agent.
 const apiAiClient = require('apiai')(API_AI_TOKEN);
 var Zendesk = require('zendesk-node-api');
 var zendesk = require('node-zendesk');
 var exampleConfig = require('./config');
+require('dotenv').config()
 
 var async = require('async');
 
@@ -64,7 +65,7 @@ module.exports = (event) => {
                 var zendesk = new Zendesk({
                   url: 'https://humanbot.zendesk.com', // https://example.zendesk.com
                   email: 'wrestlingmania9@gmail.com', // me@example.com
-                  token: 'PRNRUtWq6hEDj0NFzFhdU5VbuYLnDpUw9LJyMwAI' // hfkUny3vgHCcV3UfuqMFZWDrLKms4z3W2f6ftjPT
+                  token: process.env.ZENDESK_TOKEN// hfkUny3vgHCcV3UfuqMFZWDrLKms4z3W2f6ftjPT
                 });
                 
                 zendesk.tickets.list().then(function(ticketList) { // getting all tickets.
@@ -79,7 +80,7 @@ module.exports = (event) => {
                             if(element.via.channel == "facebook") {
                                 console.log(element.via.source.from.name);
                                 if(element.via.source.from.name == identity) {
-                                    console.log("~~~~~matched~~~~~");
+                                    console.log("~~~~matched~~~~");
                                     client.sessions.get(function (err, res, result) {
                                     if (err) {
                                         console.log(err);
